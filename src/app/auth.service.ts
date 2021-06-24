@@ -6,9 +6,9 @@ import { Router } from "@angular/router";
 
 export interface User {
     uid: string;
-    email: string| null;
-    displayName: string| null;
-    photoURL: string| null;
+    email: string | null;
+    displayName: string | null;
+    photoURL: string | null;
     emailVerified: boolean;
  }
 
