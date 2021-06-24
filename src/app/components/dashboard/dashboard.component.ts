@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../auth.service";
+import { fabric } from 'fabric';
 
 @Component({
   selector: 'app-dashboard',

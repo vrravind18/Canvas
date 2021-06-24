@@ -6,9 +6,9 @@ import { Router } from "@angular/router";
 
 export interface User {
     uid: string;
-    email: string | null;
-    displayName: string | null;
-    photoURL: string | null;
+    email: string;
+    displayName: string;
+    photoURL: string;
     emailVerified: boolean;
  }
 
@@ -31,7 +31,7 @@ export class AuthService {
           localStorage.setItem('user', JSON.stringify(this.userState));
           JSON.parse(localStorage.getItem('user')!);
         } else {
-          localStorage.setItem('user', '');
+          localStorage.setItem('user', null);
           JSON.parse(localStorage.getItem('user')!);
         }
       })
@@ -96,14 +96,14 @@ export class AuthService {
       })
     }
   
-    SetUserData(user: firebase.User | null) {
-      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user!.uid}`);
+    SetUserData(user: firebase.User) {
+      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
       const userState: User = {
-        uid: user!.uid,
-        email: user!.email,
-        displayName: user!.displayName,
-        photoURL: user!.photoURL,
-        emailVerified: user!.emailVerified
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        emailVerified: user.emailVerified
       }
       return userRef.set(userState, {
         merge: true
