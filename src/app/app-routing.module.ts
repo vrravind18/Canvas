@@ -9,7 +9,12 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { AuthGuard } from "./auth.guard";
 
 const routes: Routes = [
+  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'sign-up', component: SignUpComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'email-verification', component: VerifyEmailComponent }
 ];
 
 @NgModule({
