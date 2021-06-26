@@ -26,32 +26,32 @@ body {
   justify-content: center;
 }
 
-.login-button {
+.signup-button {
   margin-right: 5%;
 }
 
-.login-google-button {
+.signup-google-button {
   margin-left: 1%;
 }
 
-.login-subtitle {
+.signup-subtitle {
   margin-right: 5%;
   margin-top: 4%;
 }
 
-.login-signup {
+.signup-login {
   color: rgb(244, 189, 9);
   font-weight: bold;
   cursor: default;
 }
 
-.login-title-wrapper {
+.signup-title-wrapper {
   display: flex;
   justify-content: center;
   margin-bottom: 5%;
 }
 
-.login-wrapper-outer {
+.signup-wrapper-outer {
   display: table;
   position: absolute;
   top: 0;
@@ -59,11 +59,11 @@ body {
   height: 100%;
   width: 100%;
 }
-.login-wrapper-middle {
+.signup-wrapper-middle {
   display: table-cell;
   vertical-align: middle;
 }
-.login-wrapper-inner {
+.signup-wrapper-inner {
   margin-left: auto;
   margin-right: auto;
   width: 400px;

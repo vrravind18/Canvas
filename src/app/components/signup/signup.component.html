@@ -1,0 +1,36 @@
+<body>
+  <div class="signup-wrapper-outer">
+    <div class="signup-wrapper-middle">
+      <div class="signup-wrapper-inner">
+        <mat-card>
+          <mat-toolbar color="accent" class="signup-title-wrapper">
+            <span>Sign up to Canvas</span>
+            <mat-icon style="margin-left: 1%;">brush</mat-icon>
+          </mat-toolbar>
+          <mat-card-content >
+              <mat-form-field appearance="fill">
+                <input #email matInput placeholder="Email" name="email" required>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input #password matInput type="password" placeholder="Password" name="password" required>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input #confirmPassword matInput type="password" placeholder="Confirm Password" name="confirm-password" required>
+              </mat-form-field>
+          </mat-card-content>
+          <div class="button-wrapper-outer">
+              <mat-card-actions class="signup-button">
+                <button mat-raised-button (click)="authService.signup(email.value, password.value,confirmPassword.value)" color="accent">Sign up</button>
+              </mat-card-actions>
+              <p class="signup-subtitle"> or </p>
+              <mat-card-actions class="signup-google-button">
+                <button mat-raised-button (click)="authService.googleLogin()" color="primary">Sign up with Google</button>
+              </mat-card-actions>
+          </div>
+          <p style="cursor: none">Already have an account?</p>
+          <span mat-raised-button routerLink="/login" class="signup-login">Log back in!</span>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</body>
