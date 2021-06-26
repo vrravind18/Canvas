@@ -21,6 +21,30 @@ body {
   }
 }
 
+.button-wrapper-outer {
+  display: flex;
+  justify-content: center;
+}
+
+.login-button {
+  margin-right: 5%;
+}
+
+.login-google-button {
+  margin-left: 1%;
+}
+
+.login-subtitle {
+  margin-right: 5%;
+  margin-top: 4%;
+}
+
+.login-signup {
+  color: rgb(244, 189, 9);
+  font-weight: bold;
+  cursor: default;
+}
+
 .login-wrapper-outer {
   display: table;
   position: absolute;
