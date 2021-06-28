@@ -11,8 +11,8 @@ export const environment = {
     projectId: "canvas-8eec3",
     storageBucket: "canvas-8eec3.appspot.com",
     messagingSenderId: "81693423860",
-    appId: "1:81693423860:web:cdf9b4fa0cf4f95d4806a1",
-    measurementId: "G-XKM9MEQ0N0"
+    appId: "1:81693423860:web:69724b5694b816e24806a1",
+    measurementId: "G-S80CB3JE2E"
   }
 };
 
