@@ -23,17 +23,17 @@ export class CanvasComponent implements OnInit {
     @Inject(DOCUMENT) public document: Document
   ) {}
 
-  @ViewChild('email') emailInput: { nativeElement: { value: string; }; }; // accessing the reference element
-  public loggedIn = this.authService.isLoggedIn; // Whether the user is logged in or not
-  public user: any; // The user's data
+  @ViewChild('email') emailInput: { nativeElement: { value: string; }; }; 
+  public loggedIn = this.authService.isLoggedIn; 
+  public user: any; 
   private canvas: any;
-  public color: string = '#FFD740'; // The canvas' stroke color
-  public loading: boolean = true; // Whether to show the loading indicator or not
-  public mode: number = 1; // The canvas' drawing mode
-  public sharedCanvases: any; // The user's shared canvases
-  public sharedIndex = -1; // The selected shared canvas; -1 if none are selected
-  public width: number; // Width of window
-  public height: number = 700; // Height of canvas
+  public color: string = '#FFD740'; // defualt stroke color
+  public loading: boolean = true; // loading indicator
+  public mode: number = 1; // canvas mode 1 -> draw, 0 -> select
+  public sharedCanvases: any; 
+  public sharedIndex = -1; // shared canvas index -> -1 default with no selections
+  public width: number; 
+  public height: number = 700; 
 
   openDeleteDialog(){
     const dialogRef = this.dialog.open(DialogBodyComponent,{
