@@ -1,0 +1,80 @@
+.content-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+  margin-top: 1em;
+}
+
+header {
+  width: 100%;
+  height: 5%;
+}
+
+header {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-welcome-msg {
+  margin: 1em 1em;
+  color: aliceblue;
+  cursor: default;
+  font-weight: bold;
+}
+
+.header-logout-button {
+  margin: 1em 1em;
+  color: aliceblue;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+mat-form-field {
+  display: block;
+  flex-direction: column;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.tool-inner-wrapper {
+  margin-bottom: 1em;
+}
+
+.tool-card-wrapper {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 13em;
+  max-height: 36em;
+}

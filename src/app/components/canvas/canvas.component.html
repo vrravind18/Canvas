@@ -1,0 +1,68 @@
+<header>
+  <div class="header-wrapper">
+    <span *ngIf="loggedIn" class="header-welcome-msg"> Hi {{ user?.email }}!</span>
+    <span mat-raised-button class="header-logout-button" routerLink="/login" (click)="authService.logout()">Logout</span>
+  </div>
+</header>
+<div style="display:flex; justify-content:space-evenly;">
+  <mat-card class="tool-card-wrapper">
+    <div style="display:flex; align-items: center;">
+      <h1>Canvas</h1>
+      <mat-progress-spinner *ngIf="loading" mode="indeterminate" [diameter]="20" style="margin-left: 4%; margin-top: -7%;"></mat-progress-spinner>
+      <mat-icon *ngIf="!loading" style="margin-left: 4%; margin-top: -7%; padding-bottom: 30px;" color="primary">done</mat-icon>
+    </div>
+    <mat-card-content>  
+      <!-- Change Mode -->
+      <div class="tool-inner-wrapper">
+        <div style="color:darkgray;">Toggle Mode:</div>
+        <mat-button-toggle-group #group="matButtonToggleGroup">
+          <mat-button-toggle value="Edit" (click)="setMode(1)">
+            <mat-icon>brush</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="Select" (click)="setMode(0)">
+            <mat-icon>view_in_ar</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="Clear" (click)="openDeleteDialog()">
+            <mat-icon>clear</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <!-- Change Color -->
+      <div class="tool-inner-wrapper">
+        <div style="color:darkgray;">Change Brush Color:</div>
+        <input readonly style="border-radius: 5px; border: #ccc; height: 2.5em; text-align: center;" [value]="color" [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="changeColor($event)"/>
+      </div>
+      <!-- Add Image -->
+      <div class="tool-inner-wrapper">
+        <div style="color:darkgray;">Upload Images:</div>
+        <button mat-raised-button color="accent" (click)="this.document.getElementById('uploadButton').click()">
+          <mat-icon>image</mat-icon>
+          Upload Image
+          <input style="display: none;" id="uploadButton" type="file" (change)="uploadImage($event)" accept=".png,.jpg" />
+        </button>
+      </div>
+      <!-- Share Canvas -->
+      <div class="tool-inner-wrapper">
+        <div style="color:darkgray;">Share Your Canvas:</div>
+        <mat-form-field style="display: flex;" appearance="fill">
+          <input #emailToShare matInput value="Enter Email">
+        </mat-form-field>
+        <button mat-raised-button color="accent" (click)="shareCanvas(emailToShare.value)" [disabled]="!emailToShare.value">
+          <mat-icon>share</mat-icon>
+          Share Canvas
+        </button>
+      </div>
+      <!-- Load Canvas -->
+      <div class="tool-inner-wrapper">
+        <div style="color:darkgray;">Load Shared Canvas:</div>
+        <button mat-raised-button color="accent" (click)="openLoadCanvasDialog()">
+          <mat-icon>folder_shared</mat-icon>
+          Load Canvas
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div>
+    <canvas id="canvas" class="canvas"></canvas>
+  </div>
+</div>
