@@ -42,7 +42,7 @@ body {
 .login-signup {
   color: rgb(244, 189, 9);
   font-weight: bold;
-  cursor: default;
+  cursor: pointer;
 }
 
 .login-title-wrapper {
