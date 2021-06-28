@@ -1,0 +1,10 @@
+<mat-dialog-content>
+    <div> {{message}} </div>
+	<div *ngFor="let sharedCanvas of sharedCanvases; let i = index" [attr.data-index]="i">
+        <button mat-stroked-button (click)="setSharedIndex(i)"> {{ sharedCanvas.user }}'s canvas </button>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+	<button mat-raised-button color="accent" (click)="loadSharedCanvas()" tabindex="1">{{confirmButtonText}}</button>
+	<button mat-raised-button mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+</mat-dialog-actions>
