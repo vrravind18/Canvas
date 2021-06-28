@@ -1,42 +1,53 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AngularFireModule } from "@angular/fire";
-import { AngularFireAuthModule } from "@angular/fire/auth";
+
+// Import Firebase services
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { AuthService } from "./auth.service";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+// Import components
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { CanvasComponent } from './components/canvas/canvas.component';
+import { DialogBodyComponent } from './components/dialog-body/dialog-body.component';
+import { LoadCanvasDialogComponent } from './components/load-canvas-dialog/load-canvas-dialog.component';
+
+// Import Material Modules
+import { MaterialModule } from './material.module';
+
+// Import Color Picker
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    SignInComponent,
-    SignUpComponent,
-    ForgotPasswordComponent,
-    VerifyEmailComponent
+    LoginComponent,
+    SignupComponent,
+    CanvasComponent,
+    DialogBodyComponent,
+    LoadCanvasDialogComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule
+    AngularFireAuthGuardModule,
+    AngularFireStorageModule,
+    MaterialModule,
+    ColorPickerModule
   ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
