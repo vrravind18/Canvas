@@ -48,7 +48,7 @@ export class CanvasComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
-        this.canvas.clear();
+        this.canvas.remove(...this.canvas.getObjects());
         this.canvas.selection = true;
         this.canvas.preserveObjectStacking = true;
         this.canvas.backgroundColor = '#efefef';
@@ -152,9 +152,10 @@ export class CanvasComponent implements OnInit {
     this.canvas.selection = true;
     this.canvas.preserveObjectStacking = true;
     this.canvas.backgroundColor = '#efefef';
-    fabric.loadSVGFromString(canvas, (objects, options) => {
-      var obj = fabric.util.groupSVGElements(objects, options)
-      this.canvas.add(obj).requestRenderAll();
+    fabric.loadSVGFromString(canvas, (objects) => {
+      objects.map((obj) => {
+        this.canvas.add(obj).renderAll();
+      });
     });
     this.stopLoading();
   }
