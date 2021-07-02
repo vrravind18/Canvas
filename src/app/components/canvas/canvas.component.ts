@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ViewChild, HostListener,} from '@angular/core';
 import { fabric } from 'fabric';
 import { AuthService } from '../../shared/services/auth.service';
+import { CanvasService } from '../../shared/services/canvas.service';
 import { NgZone } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -17,6 +18,7 @@ import { LoadCanvasDialogComponent } from '../load-canvas-dialog/load-canvas-dia
 export class CanvasComponent implements OnInit {
   constructor(
     public authService: AuthService,
+    public canvasService: CanvasService,
     public ngZone: NgZone,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
@@ -122,7 +124,7 @@ export class CanvasComponent implements OnInit {
 
   // Upload an image to Firebase and display on the canvas
   async uploadImage(event: any) {
-    const imageURL = await this.authService.uploadImage(event);
+    const imageURL = await this.canvasService.uploadImage(event);
     fabric.Image.fromURL(imageURL, (myImg) => {
       this.canvas.add(myImg).renderAll();
     });
@@ -131,7 +133,7 @@ export class CanvasComponent implements OnInit {
   // Share canvas with another user by email
   async shareCanvas(email: string) {
     this.startLoading();
-    const success = await this.authService.shareCanvas(
+    const success = await this.canvasService.shareCanvas(
       email,
       this.canvas.toSVG()
     );
@@ -194,7 +196,7 @@ export class CanvasComponent implements OnInit {
     // Get the user's data
     await this.authService.getUserData.then((res) => (this.user = res));
     // Get the user's shared canvases
-    await this.authService.getSharedCanvases.then((res) => {
+    await this.canvasService.getSharedCanvases.then((res) => {
       this.sharedCanvases = res;
     });
     this.stopLoading();
@@ -231,25 +233,25 @@ export class CanvasComponent implements OnInit {
     // Listen for events and auto-save
     this.canvas.on('object:added', async () => {
       this.startLoading();
-      await this.authService.setCanvas(this.canvas.toSVG()); // Store serialized canvas
+      await this.canvasService.setCanvas(this.canvas.toSVG()); // Store serialized canvas
       this.stopLoading();
     });
 
     this.canvas.on('object:removed', async () => {
       this.startLoading();
-      await this.authService.setCanvas(this.canvas.toSVG()); // Store serialized canvas
+      await this.canvasService.setCanvas(this.canvas.toSVG()); // Store serialized canvas
       this.stopLoading();
     });
 
     this.canvas.on('object:moving', async () => {
       this.startLoading();
-      await this.authService.setCanvas(this.canvas.toSVG()); // Store serialized canvas
+      await this.canvasService.setCanvas(this.canvas.toSVG()); // Store serialized canvas
       this.stopLoading();
     });
 
     this.canvas.on('object:scaling', async () => {
       this.startLoading();
-      await this.authService.setCanvas(this.canvas.toSVG()); // Store serialized canvas
+      await this.canvasService.setCanvas(this.canvas.toSVG()); // Store serialized canvas
       this.stopLoading();
     });
   }
