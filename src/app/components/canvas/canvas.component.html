@@ -4,9 +4,9 @@
     <span mat-raised-button class="header-logout-button" routerLink="/login" (click)="authService.logout()">Logout</span>
   </div>
 </header>
-<div style="display:flex; justify-content:space-evenly;">
+<div class="content-wrapper">
   <mat-card class="tool-card-wrapper">
-    <div style="display:flex; align-items: center;">
+    <div class="canvas-loader-wrapper">
       <h1>Canvas</h1>
       <mat-progress-spinner *ngIf="loading" mode="indeterminate" [diameter]="20" style="margin-left: 4%; margin-top: -7%;"></mat-progress-spinner>
       <mat-icon *ngIf="!loading" style="margin-left: 4%; margin-top: -7%; padding-bottom: 30px;" color="primary">done</mat-icon>
@@ -30,7 +30,7 @@
       <!-- Change Color -->
       <div class="tool-inner-wrapper">
         <div style="color:darkgray;">Change Brush Color:</div>
-        <input readonly style="border-radius: 5px; border: #ccc; height: 2.5em; text-align: center;" [value]="color" [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="changeColor($event)"/>
+        <input readonly style="border-radius: 5px; border: #ccc; height: 2.5em; text-align: center; cursor: pointer;" [value]="color" [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="changeColor($event)"/>
       </div>
       <!-- Add Image -->
       <div class="tool-inner-wrapper">
